@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="jumbotron" style="padding:2%; text-align:center" >
+  <h2>Bank Search App</h2>
+  </div>
+  <hr>
+      <div class="form-group row">
+          <!--<label for="" class="col-sm-2 col-form-label"><b>City</b></label>-->
+          <div class="col-md-7">
+              <select class="custom-select" (change)="onChange($event.target.value)">
+                  <option selected>Select City</option>
+                  <option *ngFor="let city of cities">{{ city }}</option>
+              </select>
+          </div>
+          <div class="col-md-5">
+          <input [(ngModel)]="searchText"  placeholder="Type here to Search" class="advancedSearchTextbox form-control" style="width:100%" >
+          </div>
+      </div>
+<hr>
+<button type="button" class="btn btn-success" (click)="showlist()"> Favorite banks</button><br><br>
+<div class=" form-group row">
+  <div class="col-md-12">
+<table WIDTH="100%" border=1 id="bankers">
+  <!-- ADD HEADERS -->
+  <tr>
+    <th>IFSC</th>
+    <th>BANK ID</th>
+    <th>BRANCH</th>
+    <th>ADDRESS</th>
+    <th>CITY</th>
+    <th>DISTRICT</th>
+    <th>STATE</th>
+    <th>BANK NAME</th>
+    <th>Mark Favorite</th>
+  </tr>
+  <!-- BIND ARRAY TO TABLE -->
+  <tr *ngFor="let bank of banks$ |async | paginate: { itemsPerPage: 10, currentPage: p }| Filter: {address: searchText,branch: searchText,city:searchText,state:searchText,bank_name:searchText}">
+    <td align="center" >{{bank.ifsc}}</td>
+          <td align="center" >{{bank.bank_id}}</td>
+              <td align="center" >{{bank.branch}}</td>
+              <td align="center" >{{bank.address}}</td>
+              <td align="center" >{{bank.city}}</td>
+              <td align="center" >{{bank.district}}</td>
+              <td align="center" >{{bank.state}}</td> 
+              <td align="center" >{{bank.bank_name}}</td>
+              <td align="center" ><button type="button" class="btn btn-secondary" (click)="markfav(bank.ifsc)">Favorite</button></td>  
+  </tr>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+</div>
+</div>
