@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FetchService } from './fetch.service';
 import {PageEvent} from '@angular/material';
 import { OnInit } from '@angular/core';
+import { ArrayDataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-root',

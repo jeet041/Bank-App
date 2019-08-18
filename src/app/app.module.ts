@@ -15,8 +15,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 import { FilterPipe } from './filter.pipe';
-import { RequestCache } from './request-cache.service';
-import { CachingInterceptor } from './caching-interceptor.service';
+import { RequestCacheService } from './request-cache.service';
+import { CachingInterceptorService } from './caching-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { CachingInterceptor } from './caching-interceptor.service';
     NgxPaginationModule,
     BrowserAnimationsModule
   ],
-  providers: [FetchService,RequestCache,
-    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }],
+  providers: [FetchService,RequestCacheService,
+    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

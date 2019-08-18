@@ -3,7 +3,7 @@ import { HttpRequest, HttpResponse } from '@angular/common/http';
 
 const maxAge = 30000;
 @Injectable()
-export class RequestCache  {
+export class RequestCacheService  {
 
   cache = new Map();
 

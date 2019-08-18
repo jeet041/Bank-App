@@ -5,11 +5,11 @@ import { Observable } from 'rxjs/Observable';
 import { startWith, tap } from 'rxjs/operators';
 import 'rxjs/add/observable/of';
 
-import { RequestCache } from './request-cache.service';
+import { RequestCacheService } from './request-cache.service';
 
 @Injectable()
-export class CachingInterceptor implements HttpInterceptor {
-  constructor(private cache: RequestCache) {}
+export class CachingInterceptorService implements HttpInterceptor {
+  constructor(private cache: RequestCacheService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const cachedResponse = this.cache.get(req);
@@ -19,7 +19,7 @@ export class CachingInterceptor implements HttpInterceptor {
   sendRequest(
     req: HttpRequest<any>,
     next: HttpHandler,
-    cache: RequestCache): Observable<HttpEvent<any>> {
+    cache: RequestCacheService): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       tap(event => {
         if (event instanceof HttpResponse) {
