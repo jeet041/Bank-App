@@ -12,7 +12,7 @@
               </select>
           </div>
           <div class="col-md-5">
-          <input [(ngModel)]="searchText"  placeholder="Type here to Search" class="advancedSearchTextbox form-control" style="width:100%" >
+          <input [(ngModel)]="searchText"  placeholder="Type here to Search" class="  form-control" style="width:100%" >
           </div>
       </div>
 <hr>
@@ -33,7 +33,7 @@
     <th>Mark Favorite</th>
   </tr>
   <!-- BIND ARRAY TO TABLE -->
-  <tr *ngFor="let bank of banks$ |async | paginate: { itemsPerPage: 10, currentPage: p }| Filter: {address: searchText,branch: searchText,city:searchText,state:searchText,bank_name:searchText}">
+  <tr *ngFor="let bank of banks$ |async | paginate: { itemsPerPage: 10, currentPage: p }| filter:searchText">
     <td align="center" >{{bank.ifsc}}</td>
           <td align="center" >{{bank.bank_id}}</td>
               <td align="center" >{{bank.branch}}</td>

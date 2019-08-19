@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   p: number = 1;
   favorites=[];
   pageEvent: PageEvent;
-
+  searchText;
   constructor(private fetchService: FetchService){
     
   }

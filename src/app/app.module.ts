@@ -14,19 +14,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 
-import { FilterPipe } from './filter.pipe';
 import { RequestCacheService } from './request-cache.service';
 import { CachingInterceptorService } from './caching-interceptor.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FilterPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
     FormsModule,
     MatPaginatorModule,
     NgxPaginationModule,
